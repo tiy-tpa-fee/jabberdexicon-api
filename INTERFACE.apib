@@ -11,7 +11,7 @@ The Jabberdexicon is a simple API for a dictionary of jargon words. Formatted de
 
 # Group Entries
 
-## Entry Collections [/entries{?access_token}]
+## Entry Collections [/entries{?access_token,q}]
 
 + Attributes (array[Entry])
 
@@ -20,6 +20,10 @@ The Jabberdexicon is a simple API for a dictionary of jargon words. Formatted de
     + access_token: illustriousvoyage (string) - Your unique access token
 
 ### List Entries [GET]
+
++ Parameters
+
+    + q: duck (string, optional) - An optional search query
 
 + Response 200 (application/json)
 
