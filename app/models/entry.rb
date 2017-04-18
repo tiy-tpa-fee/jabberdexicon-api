@@ -2,7 +2,7 @@ require 'commonmarker'
 
 class Entry < ApplicationRecord
   belongs_to :user
-  validates :term, presence: true, uniqueness: true
+  validates :term, presence: true, uniqueness: { scope: :user_id, case_sensitive: false }
   validates :definition, presence: true
   before_save :format_definition
   before_save :generate_slug
