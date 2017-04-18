@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  term: "Yoda Conditions"
+  definition: >
+    When a programmer writes the conditions for a piece of code in the opposite order for which you would expect to
+    normally read them. (Instead of saying `if (variable == constant)`, the code says `if (constant == variable)`).
+
+two:
+  user: one
+  term: "Common Law Feature"
+  definition: "A bug that has existed for so long that it is considered a feature."

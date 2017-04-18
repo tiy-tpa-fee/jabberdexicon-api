@@ -1,0 +1,126 @@
+FORMAT: 1A
+HOST: https://jabberdexicon.herokuapp.com
+
+# The Jabberdexicon
+
+The Jabberdexicon is a simple API for a dictionary of jargon words. Formatted definitions are provided by the API.
+
+## Authentication
+
+*The Jabberdexicon API* uses token authentication. Your token can be any text you wish. As long as you use the same token between requests, you'll have access to the same list entries.
+
+# Group Entries
+
+## Entry Collections [/entries{?access_token}]
+
++ Attributes (array[Entry])
+
++ Parameters
+
+    + access_token: illustriousvoyage (string) - Your unique access token
+
+### List Entries [GET]
+
++ Response 200 (application/json)
+
+            [
+               {
+                  "id": 1,
+                  "user_id": 1,
+                  "term": "Common Law Feature",
+                  "slug": "common-law-feature",
+                  "definition": "A bug that has existed for so long that it is considered a feature.",
+                  "formatted_definition": "\u003cp\u003eA bug that has existed for so long that it is considered a feature.\u003c/p\u003e\n",
+                  "created_at": "2017-04-18T00:46:19.798Z",
+                  "updated_at": "2017-04-18T00:49:33.147Z"
+               },
+               {
+                  "id": 1,
+                  "user_id": 1,
+                  "term": "Yoda Conditions",
+                  "slug": "yoda-conditions",
+                  "definition": "When a programmer writes the conditions for a piece of code in the opposite order for which you would expect to normally read them. (Instead of saying `if (variable == constant)`, the code says `if (constant == variable)`).\n",
+                  "formatted_definition": "\u003cp\u003eWhen a programmer writes the conditions for a piece of code in the opposite order for which you would expect to normally read them. (Instead of saying \u003ccode\u003eif (variable == constant)\u003c/code\u003e, the code says \u003ccode\u003eif (constant == variable)\u003c/code\u003e).\u003c/p\u003e\n",
+                  "created_at": "2017-04-18T00:46:19.798Z",
+                  "updated_at": "2017-04-18T00:49:48.668Z"
+               }
+            ]
+
+### Create a New Entry [POST]
+
+You may create new entries using this action. It takes a JSON object containing the term and definition.
+
++ Request (application/json)
+
+            {
+              "entry": {
+                "term": "React",
+                "definition": "I heard React was good."
+              }
+            }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /entries/3
+
+    + Body
+
+                {
+                  "id": 3,
+                   "term": "React",
+                   "slug": "react",
+                   "definition": "I heard React was good.\n",
+                   "formatted_definition": "\u003cp\u003eI heard React was good.\u003c/p\u003e\n",
+                   "created_at": "2017-04-18T00:46:19.798Z",
+                   "updated_at": "2017-04-18T00:49:48.668Z"
+                }
+
+## Singular Entry [/entries/{id}{?access_token}]
+
++ Attributes (Entry)
+
++ Parameters
+
+    + id: 1 (number) - The unique identifier of the entry
+    + access_token: illustriousvoyage (string) - Your unique access token
+
+### Retrieve an Entry [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (Entry)
+    + Body
+
+            {
+              "id": 1,
+              "term": "Code Smell",
+              "etc": "..."
+            }
+
+### Update an Entry [PUT]
+
++ Request (application/json)
+
+        {
+          "entry": {
+            "definition": "Up in your API, vandalizing your content."
+          }
+        }
+
++ Response 204
+
+### Remove an Entry [DELETE]
+
++ Request (application/json)
+
++ Response 200
+
+# Data Structures
+
+## Entry (object)
+
++ term (required, string) - The word, or phrase being defined.
++ definition (required, string) - A Markdown formatted string that describes a term.
