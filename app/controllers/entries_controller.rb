@@ -5,13 +5,10 @@ class EntriesController < ApplicationController
   def index
     scope = params[:q].blank? ? current_user.entries.all : current_user.entries.basic_search(params[:q])
     @entries = scope.order(:term)
-
-    render json: @entries
   end
 
   # GET /entries/1
   def show
-    render json: @entry
   end
 
   # POST /entries
@@ -19,7 +16,7 @@ class EntriesController < ApplicationController
     @entry = current_user.entries.new(entry_params)
 
     if @entry.save
-      render json: @entry, status: :created, location: @entry
+      render :show, status: :created, location: @entry
     else
       render json: @entry.errors, status: :unprocessable_entity
     end
@@ -28,7 +25,7 @@ class EntriesController < ApplicationController
   # PATCH/PUT /entries/1
   def update
     if @entry.update(entry_params)
-      render json: @entry
+      render :show
     else
       render json: @entry.errors, status: :unprocessable_entity
     end

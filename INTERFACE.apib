@@ -30,23 +30,13 @@ The Jabberdexicon is a simple API for a dictionary of jargon words. Formatted de
             [
                {
                   "id": 1,
-                  "user_id": 1,
                   "term": "Common Law Feature",
-                  "slug": "common-law-feature",
-                  "definition": "A bug that has existed for so long that it is considered a feature.",
-                  "formatted_definition": "\u003cp\u003eA bug that has existed for so long that it is considered a feature.\u003c/p\u003e\n",
-                  "created_at": "2017-04-18T00:46:19.798Z",
-                  "updated_at": "2017-04-18T00:49:33.147Z"
+                  "slug": "1-common-law-feature"
                },
                {
-                  "id": 1,
-                  "user_id": 1,
+                  "id": 2,
                   "term": "Yoda Conditions",
-                  "slug": "yoda-conditions",
-                  "definition": "When a programmer writes the conditions for a piece of code in the opposite order for which you would expect to normally read them. (Instead of saying `if (variable == constant)`, the code says `if (constant == variable)`).\n",
-                  "formatted_definition": "\u003cp\u003eWhen a programmer writes the conditions for a piece of code in the opposite order for which you would expect to normally read them. (Instead of saying \u003ccode\u003eif (variable == constant)\u003c/code\u003e, the code says \u003ccode\u003eif (constant == variable)\u003c/code\u003e).\u003c/p\u003e\n",
-                  "created_at": "2017-04-18T00:46:19.798Z",
-                  "updated_at": "2017-04-18T00:49:48.668Z"
+                  "slug": "2-yoda-conditions"
                }
             ]
 
@@ -72,13 +62,11 @@ You may create new entries using this action. It takes a JSON object containing 
     + Body
 
                 {
-                  "id": 3,
+                   "id": 3,
                    "term": "React",
-                   "slug": "react",
+                   "slug": "3-react",
                    "definition": "I heard React was good.\n",
-                   "formatted_definition": "\u003cp\u003eI heard React was good.\u003c/p\u003e\n",
-                   "created_at": "2017-04-18T00:46:19.798Z",
-                   "updated_at": "2017-04-18T00:49:48.668Z"
+                   "formatted_definition": "\u003cp\u003eI heard React was good.\u003c/p\u003e\n"
                 }
 
 ## Singular Entry [/entries/{id}{?access_token}]
@@ -99,9 +87,11 @@ You may create new entries using this action. It takes a JSON object containing 
     + Body
 
             {
-              "id": 1,
-              "term": "Code Smell",
-              "etc": "..."
+               "id": 1,
+               "term": "Common Law Feature",
+               "slug": "1-common-law-feature",
+               "definition": "A bug that has existed for so long that it is considered a feature.",
+               "formatted_definition": "\u003cp\u003eA bug that has existed for so long that it is considered a feature.\u003c/p\u003e\n"
             }
 
 ### Update an Entry [PUT]

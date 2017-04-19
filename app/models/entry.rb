@@ -16,6 +16,6 @@ class Entry < ApplicationRecord
   end
 
   def generate_slug
-    self.slug = self.term.parameterize
+    self.slug = [self.id, self.term.parameterize].join('-')
   end
 end

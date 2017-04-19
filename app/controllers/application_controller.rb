@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  before_action { request.format = :json }
   before_action :authenticate!
 
   protected
