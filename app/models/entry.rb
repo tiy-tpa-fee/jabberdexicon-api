@@ -5,7 +5,7 @@ class Entry < ApplicationRecord
   validates :term, presence: true, uniqueness: { scope: :user_id, case_sensitive: false }
   validates :definition, presence: true
   before_save :format_definition
-  before_save :generate_slug
+  after_commit :generate_slug
 
   def self.searchable_columns
     [:term, :definition]
@@ -16,6 +16,6 @@ class Entry < ApplicationRecord
   end
 
   def generate_slug
-    self.slug = [self.id, self.term.parameterize].join('-')
+    update_columns slug: [self.id, self.term.parameterize].join('-')
   end
 end
