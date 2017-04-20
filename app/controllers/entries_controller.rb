@@ -3,7 +3,10 @@ class EntriesController < ApplicationController
 
   # GET /entries
   def index
-    scope = params[:q].blank? ? current_user.entries.all : current_user.entries.basic_search(params[:q])
+    scope = params[:q].blank?
+      ? current_user.entries.all
+      : current_user.entries.where('term LIKE ?' , "%#{params[:q]}%")
+
     @entries = scope.order(:term)
   end
 

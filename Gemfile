@@ -7,7 +7,6 @@ gem 'rack-cors'
 
 gem 'jbuilder'
 gem 'commonmarker'
-gem 'textacular'
 
 group :development, :test do
   gem 'byebug', platform: :mri
